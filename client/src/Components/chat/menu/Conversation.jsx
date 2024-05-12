@@ -6,7 +6,7 @@ import { allUsers } from '../../../services/api'
 
 const Conversation = ({ text }) => {
     const [users, setUsers] = useState([])
-    const { account } = useAccountContext()
+    const { account , socket , setActiveUsers } = useAccountContext()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +17,15 @@ const Conversation = ({ text }) => {
 
         fetchData()
     }, [text])
+
+    useEffect(() => {
+        socket.current.emit("addUser" , account)
+        socket.current.on("getUsers" , users => {
+            setActiveUsers(users)
+            console.log(users)
+        })
+
+    },[account])
 
     return (
         <Box>
