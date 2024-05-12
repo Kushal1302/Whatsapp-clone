@@ -1,7 +1,8 @@
 import { Server } from "socket.io";
+import 'dotenv/config'
 
-
-const io = new Server(9000,{
+const PORT = process.env.PORT || 9000
+const io = new Server(PORT,{
     cors:{
         origin:'https://whatsapp-clone-pi-lyart.vercel.app/'
     }
