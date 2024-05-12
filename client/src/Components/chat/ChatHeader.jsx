@@ -5,7 +5,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
 
 const ChatHeader = () => {
-  const { person } = useAccountContext();
+  const { person , activeUsers} = useAccountContext();
   return (
     <AppBar position="static"  >
       <Toolbar className="h-16 bg-white shadow-none " >
@@ -18,7 +18,7 @@ const ChatHeader = () => {
             />
             <Typography className="ml-4 text-black">
               <Typography>{person?.name}</Typography>
-              <Typography className="text-green-800 font-semibold" sx={{fontSize:12}}>Online</Typography>
+              <Typography className="text-green-800 font-semibold" sx={{fontSize:12}}>{activeUsers.length && activeUsers?.find(user => user.sub === person.sub) ? "Online": "Offline"}</Typography>
             </Typography>
           </Box>
           <Box className="flex items-center w-full justify-end text-black">

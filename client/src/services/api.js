@@ -45,3 +45,11 @@ export const getMessages = async (id) => {
         console.log(error)
     }
 }
+export const uploadFile = async (data) => {
+    try {
+        console.log(data)
+        return await axios.post(`${Base_Url}/upload/file` , data)
+    } catch (error) {
+        console.log(error)
+    }
+}
